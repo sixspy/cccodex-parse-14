@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}解析任务 · {{ lab }}{% endblock %}
+{% block content %}
+<h1>解析任务列表</h1>
+<p class="lede">先解析页面或文件字段，再入库。状态写在每行右侧。</p>
+<table class="grid">
+  <thead><tr><th>编号</th><th>标题</th><th>编码</th><th>状态</th><th></th></tr></thead>
+  <tbody>
+  {% for j in items %}
+    <tr>
+      <td>{{ j.id }}</td>
+      <td>{{ j.title }}</td>
+      <td class="mono">{{ j.code }}</td>
+      <td><span class="chip">{{ j.status }}</span></td>
+      <td><a href="/jobs/{{ j.id }}/">详情</a></td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

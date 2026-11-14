@@ -1,0 +1,42 @@
+:root {
+  --bg: #f4efe6;
+  --ink: #2a241c;
+  --line: #d5cbb8;
+  --accent: #8b4513;
+  --chip: #ebe3d4;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: "Source Han Serif SC", "Noto Serif SC", "Songti SC", Georgia, serif;
+  color: var(--ink);
+  background:
+    radial-gradient(ellipse at top, #fffaf0 0%, transparent 55%),
+    repeating-linear-gradient(0deg, transparent, transparent 27px, rgba(213,203,184,.35) 28px),
+    var(--bg);
+  min-height: 100vh;
+}
+.top {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 1.1rem 2rem; border-bottom: 1px solid var(--line);
+  background: rgba(255,250,240,.85);
+}
+.brand { font-size: 1.35rem; letter-spacing: .08em; }
+.who { font-size: .9rem; font-family: "IBM Plex Sans", "Segoe UI", sans-serif; }
+.sheet { max-width: 920px; margin: 2rem auto; padding: 0 1.25rem 3rem; }
+h1 { font-weight: 600; margin: 0 0 .6rem; }
+.lede, .hint, .crumb { font-family: "IBM Plex Sans", "Segoe UI", sans-serif; color: #5c5346; }
+.grid { width: 100%; border-collapse: collapse; background: #fffdf8; border: 1px solid var(--line); }
+.grid th, .grid td { padding: .7rem .8rem; border-bottom: 1px solid var(--line); text-align: left; font-family: "IBM Plex Sans", sans-serif; font-size: .95rem; }
+.mono { font-family: "IBM Plex Mono", Consolas, monospace; font-size: .85rem; }
+.chip { display: inline-block; padding: .15rem .55rem; background: var(--chip); border: 1px solid var(--line); font-size: .85rem; }
+.login-card { max-width: 360px; margin: 3rem auto; padding: 1.75rem; background: #fffdf8; border: 1px solid var(--line); }
+label { display: block; margin: .8rem 0; font-family: "IBM Plex Sans", sans-serif; }
+input { width: 100%; margin-top: .35rem; padding: .55rem .65rem; border: 1px solid var(--line); background: #fff; }
+button { margin-top: 1rem; padding: .6rem 1.1rem; border: 1px solid var(--accent); background: var(--accent); color: #fffaf0; cursor: pointer; font-family: "IBM Plex Sans", sans-serif; }
+button.secondary { background: transparent; color: var(--accent); }
+.err { color: #9b2c2c; font-family: "IBM Plex Sans", sans-serif; }
+.meta { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: .8rem 1.2rem; font-family: "IBM Plex Sans", sans-serif; }
+.meta dt { font-size: .75rem; color: #7a7163; } .meta dd { margin: .15rem 0 0; }
+.actions { display: flex; gap: .8rem; margin-top: 1.5rem; }
+a { color: var(--accent); }

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{% block title %}{{ lab }}{% endblock %}</title>
+  <link rel="stylesheet" href="/static/parse.css" />
+</head>
+<body>
+  <header class="top">
+    <div class="brand">{{ lab }}</div>
+    {% if user %}<div class="who">{{ user }} · <a href="/logout">退出</a></div>{% endif %}
+  </header>
+  <main class="sheet">{% block content %}{% endblock %}</main>
+</body>
+</html>

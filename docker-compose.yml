@@ -1,0 +1,20 @@
+services:
+  parse-lab:
+    build: .
+    container_name: cc-parse-lab-parse-14
+    ports:
+      - "6330:6200"
+    environment:
+      HOST: "0.0.0.0"
+      PORT: "6200"
+      DATABASE_PATH: /app/instance/parse_lab.db
+    volumes:
+      - parse_lab_data:/app/instance
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:6200/login', timeout=5)"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+volumes:
+  parse_lab_data:

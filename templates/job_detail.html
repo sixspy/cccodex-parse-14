@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}{{ job.title }} · {{ lab }}{% endblock %}
+{% block content %}
+<p class="crumb"><a href="/jobs/">← 返回列表</a></p>
+<h1>{{ job.title }}</h1>
+<dl class="meta">
+  <div><dt>编码</dt><dd class="mono">{{ job.code }}</dd></div>
+  <div><dt>状态</dt><dd><span class="chip">{{ job.status }}</span></dd></div>
+  <div><dt>源地址</dt><dd class="mono">{{ job.source_uri }}</dd></div>
+  <div><dt>已解析</dt><dd>{{ job.parsed }}</dd></div>
+  <div><dt>已入库</dt><dd>{{ job.landed }}</dd></div>
+</dl>
+<div class="actions">
+  <form method="post" action="/jobs/{{ job.id }}/parse/">{% csrf_token %}<button type="submit">执行解析</button></form>
+  <form method="post" action="/jobs/{{ job.id }}/land/">{% csrf_token %}<button type="submit" class="secondary">执行入库</button></form>
+</div>
+{% endblock %}
