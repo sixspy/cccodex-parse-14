@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}回滚单 #{{ ticket.id }} · {{ lab }}{% endblock %}
+{% block content %}
+<p class="crumb"><a href="/jobs/{{ ticket.job_id }}/">← 返回任务详情</a></p>
+<h1>回滚单 #{{ ticket.id }}</h1>
+
+<dl class="meta">
+  <div><dt>类型</dt><dd>{{ ticket.kind }}</dd></div>
+  <div><dt>状态</dt><dd><span class="chip">{{ ticket.status }}</span></dd></div>
+  <div><dt>发起人</dt><dd>{{ ticket.operator }}</dd></div>
+  <div><dt>关联落档</dt><dd class="mono">#{{ ticket.record_id }} · 钥匙 {{ ticket.record.display_key }}（落档人 {{ ticket.record.operator }}）</dd></div>
+  <div><dt>缘故</dt><dd>{{ ticket.reason }}</dd></div>
+  <div><dt>创建时间</dt><dd>{{ ticket.created_at|date:"Y-m-d H:i:s" }}</dd></div>
+  <div><dt>完成时间</dt><dd>{{ ticket.finished_at|date:"Y-m-d H:i:s"|default:"—" }}</dd></div>
+</dl>
+
+<h2>回滚单正文</h2>
+{% if ticket.body %}
+<pre class="ticket-body">{{ ticket.body }}</pre>
+{% else %}
+<p class="hint">回滚仍在后台执行，正文完成后写出。</p>
+{% endif %}
+
+<h2>幂等结果与本批落档争用记录</h2>
+{% if idem_events %}
+<ul class="events">
+  {% for c in idem_events %}
+  <li class="ev ev-{{ c.kind }}">
+    <span class="ev-time">{{ c.created_at|date:"m-d H:i:s" }}</span>
+    <span class="ev-kind">{{ c.kind }}</span>
+    <span class="ev-msg">{{ c.message }}</span>
+    <span class="ev-actor">· {{ c.actor }}</span>
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p class="hint">本批无幂等撞钥或落档争用失败记录。</p>
+{% endif %}
+{% endblock %}

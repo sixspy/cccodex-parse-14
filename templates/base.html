@@ -9,8 +9,21 @@
 <body>
   <header class="top">
     <div class="brand">{{ lab }}</div>
-    {% if user %}<div class="who">{{ user }} · <a href="/logout">退出</a></div>{% endif %}
+    {% if user %}
+    <nav class="nav">
+      <a href="/jobs/">落档列表</a>
+      <a href="/policy/">幂等策略</a>
+    </nav>
+    <div class="who">{{ user }} · <a href="/logout">退出</a></div>
+    {% endif %}
   </header>
-  <main class="sheet">{% block content %}{% endblock %}</main>
+  <main class="sheet">
+    {% if messages %}
+      <div class="msgs">
+        {% for m in messages %}<p class="msg msg-{{ m.tags }}">{{ m }}</p>{% endfor %}
+      </div>
+    {% endif %}
+    {% block content %}{% endblock %}
+  </main>
 </body>
 </html>

@@ -38,5 +38,29 @@ button.secondary { background: transparent; color: var(--accent); }
 .err { color: #9b2c2c; font-family: "IBM Plex Sans", sans-serif; }
 .meta { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: .8rem 1.2rem; font-family: "IBM Plex Sans", sans-serif; }
 .meta dt { font-size: .75rem; color: #7a7163; } .meta dd { margin: .15rem 0 0; }
-.actions { display: flex; gap: .8rem; margin-top: 1.5rem; }
+.actions { display: flex; gap: .8rem; margin-top: 1.5rem; flex-wrap: wrap; align-items: flex-end; }
 a { color: var(--accent); }
+.nav { display: flex; gap: 1.1rem; font-family: "IBM Plex Sans", "Segoe UI", sans-serif; font-size: .92rem; }
+.msgs { margin-bottom: 1rem; }
+.msg { padding: .55rem .8rem; border: 1px solid var(--line); font-family: "IBM Plex Sans", sans-serif; font-size: .92rem; background: #fffdf8; }
+.msg-success { border-color: #3f7d4e; color: #2f6240; background: #eef6ef; }
+.msg-error { border-color: #9b2c2c; color: #9b2c2c; background: #f9ecec; }
+.num { font-family: "IBM Plex Mono", Consolas, monospace; }
+.small { font-size: .8rem; }
+.inline { display: inline-flex; align-items: center; gap: .4rem; margin: 0; }
+.inline input { width: auto; margin-top: 0; min-width: 220px; }
+.land-form { display: flex; align-items: flex-end; gap: .6rem; padding: .6rem .8rem; border: 1px dashed var(--line); background: rgba(255,253,248,.6); }
+.roll-form { display: flex; gap: .4rem; align-items: center; }
+.roll-form input { width: 180px; padding: .4rem .5rem; }
+.small-btn { margin-top: 0; padding: .35rem .7rem; font-size: .85rem; }
+button:disabled, input:disabled { opacity: .45; cursor: not-allowed; }
+h2 { font-size: 1.05rem; margin: 1.8rem 0 .6rem; border-bottom: 1px solid var(--line); padding-bottom: .3rem; }
+.events { list-style: none; padding: 0; margin: 0; font-family: "IBM Plex Sans", sans-serif; font-size: .88rem; }
+.ev { padding: .4rem .2rem; border-bottom: 1px dotted var(--line); display: flex; gap: .6rem; flex-wrap: wrap; }
+.ev-time { color: #7a7163; font-family: "IBM Plex Mono", monospace; }
+.ev-kind { min-width: 7rem; font-weight: 600; }
+.ev-落档争用失败 .ev-kind, .ev-幂等撞钥 .ev-kind { color: #9b2c2c; }
+.ticket-body { white-space: pre-wrap; background: #fffdf8; border: 1px solid var(--line); padding: 1rem; font-family: "IBM Plex Mono", "IBM Plex Sans", monospace; font-size: .88rem; line-height: 1.7; }
+.policy-form { margin-top: 1.2rem; padding: 1.2rem; background: #fffdf8; border: 1px solid var(--line); max-width: 560px; }
+.choice { display: flex; align-items: center; gap: .5rem; margin: .5rem 0; }
+.choice input { width: auto; margin: 0; }

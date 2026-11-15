@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}幂等策略 · {{ lab }}{% endblock %}
+{% block content %}
+<h1>幂等处置策略</h1>
+<p class="lede">幂等撞钥只许定一种处置；写进策略后当天不许换弦，次日方可改写。点落档时若与策略不一致，台面直接拦截。</p>
+
+{% if policy %}
+<dl class="meta">
+  <div><dt>当前策略</dt><dd><strong>{{ policy.label }}</strong>（{{ policy.mode }}）</dd></div>
+  <div><dt>写定人</dt><dd>{{ policy.set_by }}</dd></div>
+  <div><dt>写定日期</dt><dd>{{ policy.set_date }}</dd></div>
+</dl>
+{% else %}
+<p class="err">尚未写定任何策略；未写定前禁止落档。</p>
+{% endif %}
+
+<form method="post" action="/policy/" class="policy-form">
+  {% csrf_token %}
+  {% for mode, label in choices %}
+  <label class="choice">
+    <input type="radio" name="mode" value="{{ mode }}"
+           {% if policy and policy.mode == mode %}checked{% endif %}
+           {% if locked_today %}disabled{% endif %} />
+    <strong>{{ label }}</strong>
+    <span class="hint">（{{ mode }}）</span>
+  </label>
+  {% endfor %}
+  <button type="submit" {% if locked_today %}disabled title="当天不许换弦"{% endif %}>写定策略</button>
+</form>
+{% if locked_today %}
+<p class="err">策略已于 {{ policy.set_date }} 写定，当天不许换弦。</p>
+{% endif %}
+{% endblock %}
